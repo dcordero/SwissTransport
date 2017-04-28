@@ -109,23 +109,24 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-    <Folder Include="View\" />
-    <Folder Include="Presenter\" />
+    <Folder Include="Sources\" />
+    <Folder Include="Sources\View\" />
+    <Folder Include="Sources\Presenter\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppDelegate.cs" />
-    <Compile Include="ServiceLocator.cs" />
-    <Compile Include="Wireframe.cs" />
-    <Compile Include="View\StationboardCell.cs" />
-    <Compile Include="View\StationboardViewController.cs" />
-    <Compile Include="Presenter\StationboardPresenter.cs" />
-    <Compile Include="Presenter\IStationboardPresenter.cs" />
-    <Compile Include="View\IStationboardUI.cs" />
-    <Compile Include="View\StationboardViewControllerDataSource.cs" />
+    <Compile Include="Sources\AppDelegate.cs" />
+    <Compile Include="Sources\ServiceLocator.cs" />
+    <Compile Include="Sources\Wireframe.cs" />
+    <Compile Include="Sources\View\IStationboardUI.cs" />
+    <Compile Include="Sources\View\StationboardCell.cs" />
+    <Compile Include="Sources\View\StationboardViewController.cs" />
+    <Compile Include="Sources\View\StationboardViewControllerDataSource.cs" />
+    <Compile Include="Sources\Presenter\IStationboardPresenter.cs" />
+    <Compile Include="Sources\Presenter\StationboardPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SwissTransportLibrary\SwissTransportLibrary.csproj">
