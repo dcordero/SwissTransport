@@ -10,6 +10,7 @@ namespace SwissTransportLibrary
 {
     public class SwissTransport
     {
+        #region Public
 
         public async Task<List<Location>> GetLocations()
         {
@@ -30,21 +31,27 @@ namespace SwissTransportLibrary
                 }
             }
 
-			return locations.ToList();
-		}
+            return locations.ToList();
+        }
+        #endregion
 
-		private const string ApiBaseAddress = "http://transport.opendata.ch/v1/";
-		private HttpClient CreateClient()
-		{
-			var httpClient = new HttpClient
-			{
-				BaseAddress = new Uri(ApiBaseAddress)
-			};
 
-			httpClient.DefaultRequestHeaders.Accept.Clear();
-			httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        #region Private
 
-			return httpClient;
-		}
+        private const string ApiBaseAddress = "http://transport.opendata.ch/v1/";
+        private HttpClient CreateClient()
+        {
+            var httpClient = new HttpClient
+            {
+                BaseAddress = new Uri(ApiBaseAddress)
+            };
+
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            return httpClient;
+        }
+
+        #endregion
     }
 }

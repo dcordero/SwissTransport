@@ -12,6 +12,7 @@ namespace SwissTransportBoard
 		{
 			TitleLabel = new UILabel();
 			TitleLabel.Frame = this.Bounds;
+            BackgroundColor = UIColor.Blue;
 		}
 
 		public static void RegisterCellForReuse(UITableView tableView)

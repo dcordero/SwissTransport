@@ -1,4 +1,6 @@
 ﻿using System;
+using SwissTransportBoard.Presenter;
+using SwissTransportBoard.View;
 using UIKit;
 
 namespace SwissTransportBoard
@@ -19,7 +21,11 @@ namespace SwissTransportBoard
 
         public UIViewController ProvideStationboardViewController() 
         {
-            UIViewController viewController = new StationboardViewController();
+            StationboardViewController viewController = new StationboardViewController();
+
+            viewController.Presenter = new StationboardPresenter(viewController);
+            viewController.DataSource = new StationboardViewControllerDataSource();
+
             return viewController;
         }
     }

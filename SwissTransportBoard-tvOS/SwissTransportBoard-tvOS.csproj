@@ -110,6 +110,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="View\" />
+    <Folder Include="Presenter\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -121,6 +122,10 @@
     <Compile Include="Wireframe.cs" />
     <Compile Include="View\StationboardCell.cs" />
     <Compile Include="View\StationboardViewController.cs" />
+    <Compile Include="Presenter\StationboardPresenter.cs" />
+    <Compile Include="Presenter\IStationboardPresenter.cs" />
+    <Compile Include="View\IStationboardUI.cs" />
+    <Compile Include="View\StationboardViewControllerDataSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SwissTransportLibrary\SwissTransportLibrary.csproj">

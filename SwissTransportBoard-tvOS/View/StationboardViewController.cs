@@ -1,50 +1,53 @@
 ﻿using System;
 using UIKit;
+using SwissTransportBoard.Presenter;
+using SwissTransportBoard.View;
 
 namespace SwissTransportBoard
 {
-	public class StationboardViewController : UIViewController
-	{
+    public class StationboardViewController : UIViewController, IStationboardUI
+    {
+        public IStationboardPresenter Presenter { get; set; }
+		public UITableViewDataSource DataSource { get; set; }
 
 		private UITableView tableView;
-		private UITableViewDataSource dataSource = new StationboardViewControllerDataSource();
 
-		public override void ViewDidLoad()
-		{
-			base.ViewDidLoad();
+        #region UIViewController
 
-			SetUpView();
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
+            SetUpView();
+            Presenter.ViewDidLoad();
+        }
 
+        #endregion
 
-            View.BackgroundColor = UIColor.Red;
-		}
+        #region IStationboardUI
 
-		private void SetUpView()
-		{
-			tableView = new UITableView();
-			tableView.DataSource = dataSource;
-			StationboardCell.RegisterCellForReuse(tableView);
-			View.AddSubview(tableView);
+        public void Configure()
+        {
+            View.BackgroundColor = UIColor.Purple;
+        }
 
-			tableView.TranslatesAutoresizingMaskIntoConstraints = false;
-			tableView.LeadingAnchor.ConstraintEqualTo(this.View.LeadingAnchor).Active = true;
-			tableView.TrailingAnchor.ConstraintEqualTo(this.View.TrailingAnchor).Active = true;
-			tableView.TopAnchor.ConstraintEqualTo(this.View.TopAnchor).Active = true;
-			tableView.BottomAnchor.ConstraintEqualTo(this.View.BottomAnchor).Active = true;
-		}
-	}
+        #endregion
 
-	public class StationboardViewControllerDataSource : UITableViewDataSource
-	{
-		public override nint RowsInSection(UITableView tableView, nint section)
-		{
-			return 10;
-		}
+        #region Private
 
-		public override UITableViewCell GetCell(UITableView tableView, Foundation.NSIndexPath indexPath)
-		{
-			StationboardCell cell = (StationboardCell)tableView.DequeueReusableCell(StationboardCell.ReusableIdentifier, indexPath);
-			return cell;
-		}
-	}
+        private void SetUpView()
+        {
+            tableView = new UITableView();
+            tableView.DataSource = DataSource;
+            StationboardCell.RegisterCellForReuse(tableView);
+            View.AddSubview(tableView);
+
+            tableView.TranslatesAutoresizingMaskIntoConstraints = false;
+            tableView.LeadingAnchor.ConstraintEqualTo(this.View.LeadingAnchor).Active = true;
+            tableView.TrailingAnchor.ConstraintEqualTo(this.View.TrailingAnchor).Active = true;
+            tableView.TopAnchor.ConstraintEqualTo(this.View.TopAnchor).Active = true;
+            tableView.BottomAnchor.ConstraintEqualTo(this.View.BottomAnchor).Active = true;
+        }
+
+        #endregion
+    }
 }
