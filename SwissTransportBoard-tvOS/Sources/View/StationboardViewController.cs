@@ -8,9 +8,9 @@ namespace SwissTransportBoard
     public class StationboardViewController : UIViewController, IStationboardUI
     {
         public IStationboardPresenter Presenter { get; set; }
-		public UITableViewDataSource DataSource { get; set; }
+        public UITableViewDataSource DataSource { get; set; }
 
-		private UITableView tableView;
+        private UITableView tableView;
 
         #region UIViewController
 
