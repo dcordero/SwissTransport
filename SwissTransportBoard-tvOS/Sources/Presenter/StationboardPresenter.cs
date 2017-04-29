@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using SwissTransportBoard.View;
-using SwissTransportLibrary;
+using SwissTransportPortableLibrary;
 
 namespace SwissTransportBoard.Presenter
 {
@@ -18,6 +18,8 @@ namespace SwissTransportBoard.Presenter
 
         public void ViewDidLoad()
         {
+            FetchLocationsAsync();
+
             IStationboardUI MyView;
             if (View.TryGetTarget(out MyView))
             {
@@ -32,7 +34,8 @@ namespace SwissTransportBoard.Presenter
         private async void FetchLocationsAsync()
         {
             SwissTransport swissTransport = new SwissTransport();
-            List<Location> locations = await swissTransport.GetLocations();
+            List<Location> locations = await swissTransport.GetLocations("Oerlikon");
+
         }
 
         #endregion

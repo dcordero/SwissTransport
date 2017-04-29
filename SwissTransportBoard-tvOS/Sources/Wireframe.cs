@@ -8,7 +8,7 @@ namespace SwissTransportBoard
         public void PresentInitialViewController()
         {
             UIViewController viewController = ServiceLocator.Instance.ProvideStationboardViewController();
-            SetRootViewController(viewController);                                              
+            SetRootViewController(viewController);
         }
 
         private void SetRootViewController(UIViewController viewController)
