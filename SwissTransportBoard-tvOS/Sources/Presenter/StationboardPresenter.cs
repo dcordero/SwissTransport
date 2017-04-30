@@ -34,8 +34,11 @@ namespace SwissTransportBoard.Presenter
         private async void FetchLocationsAsync()
         {
             SwissTransport swissTransport = new SwissTransport();
-            List<Location> locations = await swissTransport.GetLocations("Oerlikon");
+            ListOfLocations listOfLocations = await swissTransport.GetLocations("Oerlikon");
 
+            ListOfLocations tmp = await swissTransport.GetStationBoard(listOfLocations.Locations[0].Id);
+
+            int i = 0;
         }
 
         #endregion

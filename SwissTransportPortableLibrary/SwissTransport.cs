@@ -20,18 +20,16 @@ namespace SwissTransportPortableLibrary
 
 		#region Public
 
-		public async Task<List<Location>> GetLocations(string locationName = null)
+		public async Task<ListOfLocations> GetLocations(string locationName)
         {
-			List<Location> locations = new List<Location>();
-
-			var url = "locations";
-			if (locationName != null)
-			{
-				url += String.Format("?query={0}", locationName);
-			}
-
-            return await HttpGet<List<Location>>(url);
+            return await HttpGet<ListOfLocations>(String.Format("locations?query={0}", locationName));
         }
+
+        public async Task<ListOfLocations> GetStationBoard(string stationId)
+        {
+            return await HttpGet<ListOfLocations>(String.Format("stationboard?station={0}", stationId));
+        }
+
         #endregion
 
 
@@ -59,11 +57,7 @@ namespace SwissTransportPortableLibrary
                 throw new Exception();
 			}
 
-			//CheckIfJson(responseContent);
-
-			var result = JsonConvert.DeserializeObject<T>(responseContent);
-
-			return result;
+			return JsonConvert.DeserializeObject<T>(responseContent);
 		}
 
         #endregion
