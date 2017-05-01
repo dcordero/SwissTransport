@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using System.Net.Http.Headers;
-using SwissTransportPortableLibrary;
 using SwissTransportPortableLibrary.Models;
 using SwissTransportPortableLibrary.NetworkDTOs;
 using SwissTransportPortableLibrary.Transformers;

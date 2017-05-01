@@ -9,17 +9,17 @@ namespace SwissTransportPortableLibrary.Transformers
     {
         internal static List<Journey> Transform(List<JourneyDTO> journeysDTO)
         {
-			List<Journey> journeys = new List<Journey>();
+            List<Journey> journeys = new List<Journey>();
             foreach (JourneyDTO journeyDTO in journeysDTO)
-			{
+            {
                 journeys.Add(Transform(journeyDTO));
-			}
-			return journeys;
+            }
+            return journeys;
         }
 
         private static Journey Transform(JourneyDTO journeyDTO)
         {
-            return new Journey(journeyDTO.Name, journeyDTO.To);
+            return new Journey(journeyDTO.Name, journeyDTO.To, StopDTOToModel.Transform(journeyDTO.Stop));
         }
     }
 }

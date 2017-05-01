@@ -19,7 +19,7 @@ namespace SwissTransportPortableLibrary.Transformers
 
         internal static Location Transform(LocationDTO locationDTO)
         {
-			return new Location(locationDTO.Id, locationDTO.Name);
-		}
+            return new Location(locationDTO.Id, locationDTO.Name);
+        }
     }
 }

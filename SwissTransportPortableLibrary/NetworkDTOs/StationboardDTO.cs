@@ -7,10 +7,10 @@ namespace SwissTransportPortableLibrary.NetworkDTOs
     [DataContract]
     class StationboardDTO
     {
-		[DataMember(Name = "station")]
+        [DataMember(Name = "station")]
         internal LocationDTO Station { get; set; }
 
-		[DataMember(Name = "stationboard")]
+        [DataMember(Name = "stationboard")]
         internal List<JourneyDTO> Journeys { get; set; }
-	}
+    }
 }
