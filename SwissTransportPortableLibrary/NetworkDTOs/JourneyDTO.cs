@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using System.Collections.Generic;
 
 namespace SwissTransportPortableLibrary.NetworkDTOs
 {
@@ -11,5 +12,8 @@ namespace SwissTransportPortableLibrary.NetworkDTOs
 
 		[DataMember(Name = "to")]
 		internal String To { get; set; }
+
+        [DataMember(Name = "stop")]
+        internal StopDTO stop { get; set; }
 	}
 }

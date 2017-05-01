@@ -29,18 +29,21 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Public\SwissTransport.cs" />
-    <Compile Include="Public\Models\Journey.cs" />
-    <Compile Include="Public\Models\Location.cs" />
-    <Compile Include="Public\Models\Stationboard.cs" />
-    <Compile Include="Private\NetworkDTOs\JourneyDTO.cs" />
-    <Compile Include="Private\NetworkDTOs\ListOfLocationsDTO.cs" />
-    <Compile Include="Private\NetworkDTOs\LocationDTO.cs" />
-    <Compile Include="Private\NetworkDTOs\StationboardDTO.cs" />
-    <Compile Include="Private\Transformers\JourneyDTOToModel.cs" />
-    <Compile Include="Private\Transformers\LocationsDTOToModel.cs" />
-    <Compile Include="Private\Transformers\StationboardDTOToModel.cs" />
-    <Compile Include="Private\ApiClient.cs" />
+    <Compile Include="NetworkDTOs\JourneyDTO.cs" />
+    <Compile Include="NetworkDTOs\ListOfLocationsDTO.cs" />
+    <Compile Include="NetworkDTOs\LocationDTO.cs" />
+    <Compile Include="NetworkDTOs\StationboardDTO.cs" />
+    <Compile Include="NetworkDTOs\StopDTO.cs" />
+    <Compile Include="Transformers\JourneyDTOToModel.cs" />
+    <Compile Include="Transformers\LocationsDTOToModel.cs" />
+    <Compile Include="Transformers\StationboardDTOToModel.cs" />
+    <Compile Include="ApiClient.cs" />
+    <Compile Include="Models\Journey.cs" />
+    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\Stationboard.cs" />
+    <Compile Include="SwissTransport.cs" />
+    <Compile Include="Models\Stop.cs" />
+    <Compile Include="Transformers\StopDTOToModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
@@ -51,11 +54,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Public\" />
-    <Folder Include="Public\Models\" />
-    <Folder Include="Private\" />
-    <Folder Include="Private\NetworkDTOs\" />
-    <Folder Include="Private\Transformers\" />
+    <Folder Include="NetworkDTOs\" />
+    <Folder Include="Transformers\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

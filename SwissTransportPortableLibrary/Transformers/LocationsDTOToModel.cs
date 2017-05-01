@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SwissTransportPortableLibrary.Transformers
 {
-   class LocationsDTOToLocation
+   class LocationsDTOToModel
     {
         internal static List<Location> Transform(ListOfLocationsDTO listOfLocationsDTO)
         {

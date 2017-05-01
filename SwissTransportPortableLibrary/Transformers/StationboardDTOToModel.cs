@@ -8,7 +8,7 @@ namespace SwissTransportPortableLibrary.Transformers
     {
         internal static Stationboard Transform(StationboardDTO stationboardDTO)
         {
-            return new Stationboard(LocationsDTOToLocation.Transform(stationboardDTO.Station), 
+            return new Stationboard(LocationsDTOToModel.Transform(stationboardDTO.Station), 
                                     JourneyDTOToModel.Transform(stationboardDTO.Journeys));
         }
     }
