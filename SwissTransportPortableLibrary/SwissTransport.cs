@@ -2,32 +2,37 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
+using SwissTransportPortableLibrary.Models;
+using SwissTransportPortableLibrary.NetworkDTOs;
+using SwissTransportPortableLibrary.Transformers;
 
 namespace SwissTransportPortableLibrary
 {
-	public class SwissTransport
+    public class SwissTransport
     {
-		private const string ApiBaseAddress = "http://transport.opendata.ch/v1/";
+        private const string ApiBaseAddress = "http://transport.opendata.ch/v1/";
 
-		protected HttpClient ApiClient { get; private set; }
+        protected HttpClient ApiClient { get; private set; }
 
-        public SwissTransport() {
+        public SwissTransport()
+        {
             ApiClient = CreateClient();
         }
 
-		#region Public
+        #region Public
 
-		public async Task<ListOfLocations> GetLocations(string locationName)
+        public async Task<List<Location>> GetLocations(string locationName)
         {
-            return await HttpGet<ListOfLocations>(String.Format("locations?query={0}", locationName));
+            var listOfLocationsDTO = await HttpGet<ListOfLocationsDTO>(String.Format("locations?query={0}", locationName));
+            return LocationsDTOToLocation.Transform(listOfLocationsDTO);
         }
 
-        public async Task<ListOfLocations> GetStationBoard(string stationId)
+        public async Task<Stationboard> GetStationBoard(string stationId)
         {
-            return await HttpGet<ListOfLocations>(String.Format("stationboard?station={0}", stationId));
+            var stationboardDTO = await HttpGet<StationboardDTO>(String.Format("stationboard?station={0}", stationId));
+            return StationboardDTOToModel.Transform(stationboardDTO);
         }
 
         #endregion
@@ -47,18 +52,18 @@ namespace SwissTransportPortableLibrary
         }
 
 
-		public async Task<T> HttpGet<T>(String path) where T : class
-		{
-			HttpResponseMessage response = await ApiClient.GetAsync(path);
-			var responseContent = await response.Content.ReadAsStringAsync();
+        public async Task<T> HttpGet<T>(String path) where T : class
+        {
+            HttpResponseMessage response = await ApiClient.GetAsync(path);
+            var responseContent = await response.Content.ReadAsStringAsync();
 
-			if (!response.IsSuccessStatusCode)
-			{
+            if (!response.IsSuccessStatusCode)
+            {
                 throw new Exception();
-			}
+            }
 
-			return JsonConvert.DeserializeObject<T>(responseContent);
-		}
+            return JsonConvert.DeserializeObject<T>(responseContent);
+        }
 
         #endregion
     }

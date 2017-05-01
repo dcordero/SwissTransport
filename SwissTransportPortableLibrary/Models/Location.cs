@@ -1,22 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SwissTransportPortableLibrary
+namespace SwissTransportPortableLibrary.Models
 {
-    [DataContract]
-	public class Location
-	{
-        [DataMember(Name = "id")]
-        public String Id { get; set; }
+    public class Location
+    {
+		public String Id { get; private set; }
 
-        [DataMember(Name = "type")]
-		public string Type { get; set; }
+		public string Name { get; private set; }
 
-        [DataMember(Name = "name")]
-		public string Name { get; set; }
-	}
+		public Location(string id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
+    }
 }
