@@ -10,9 +10,9 @@ namespace SwissTransportPortableLibrary.NetworkDTOs
         internal String Id { get; set; }
 
         [DataMember(Name = "type")]
-		internal string Type { get; set; }
+		internal String Type { get; set; }
 
         [DataMember(Name = "name")]
-		internal string Name { get; set; }
+		internal String Name { get; set; }
 	}
 }

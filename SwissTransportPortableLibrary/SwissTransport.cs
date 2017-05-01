@@ -44,7 +44,6 @@ namespace SwissTransportPortableLibrary
         {
             HttpClient apiClient = new HttpClient();
             apiClient.BaseAddress = new Uri(ApiBaseAddress);
-
             apiClient.DefaultRequestHeaders.Accept.Clear();
             apiClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 

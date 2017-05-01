@@ -37,6 +37,9 @@
     <Compile Include="NetworkDTOs\StationboardDTO.cs" />
     <Compile Include="Models\Stationboard.cs" />
     <Compile Include="Transformers\StationboardDTOToModel.cs" />
+    <Compile Include="NetworkDTOs\JourneyDTO.cs" />
+    <Compile Include="Models\Journey.cs" />
+    <Compile Include="Transformers\JourneyDTOToModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">
