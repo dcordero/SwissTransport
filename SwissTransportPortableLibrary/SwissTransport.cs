@@ -14,7 +14,7 @@ namespace SwissTransportPortableLibrary
     {
         private const string ApiBaseAddress = "http://transport.opendata.ch/v1/";
 
-        protected HttpClient ApiClient { get; private set; }
+        private HttpClient ApiClient { get; set; }
 
         public SwissTransport()
         {
@@ -52,7 +52,7 @@ namespace SwissTransportPortableLibrary
         }
 
 
-        public async Task<T> HttpGet<T>(String path) where T : class
+        private async Task<T> HttpGet<T>(String path) where T : class
         {
             HttpResponseMessage response = await ApiClient.GetAsync(path);
             var responseContent = await response.Content.ReadAsStringAsync();

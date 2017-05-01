@@ -4,9 +4,9 @@ using SwissTransportPortableLibrary.NetworkDTOs;
 
 namespace SwissTransportPortableLibrary.Transformers
 {
-    public class StationboardDTOToModel
+    class StationboardDTOToModel
     {
-        public static Stationboard Transform(StationboardDTO stationboardDTO)
+        internal static Stationboard Transform(StationboardDTO stationboardDTO)
         {
             return new Stationboard(LocationsDTOToLocation.Transform(stationboardDTO.Station));
         }

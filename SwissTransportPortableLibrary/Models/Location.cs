@@ -8,7 +8,7 @@ namespace SwissTransportPortableLibrary.Models
 
 		public string Name { get; private set; }
 
-		public Location(string id, string name)
+		internal Location(string id, string name)
         {
             Id = id;
             Name = name;

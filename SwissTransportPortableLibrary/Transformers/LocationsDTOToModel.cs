@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SwissTransportPortableLibrary.Transformers
 {
-   public class LocationsDTOToLocation
+   class LocationsDTOToLocation
     {
-        public static List<Location> Transform(ListOfLocationsDTO listOfLocationsDTO)
+        internal static List<Location> Transform(ListOfLocationsDTO listOfLocationsDTO)
         {
             List<Location> locations = new List<Location>();
             foreach (LocationDTO locationDTO in listOfLocationsDTO.Locations) {
@@ -17,7 +17,7 @@ namespace SwissTransportPortableLibrary.Transformers
             return locations;
         }
 
-        public static Location Transform(LocationDTO locationDTO)
+        internal static Location Transform(LocationDTO locationDTO)
         {
 			return new Location(locationDTO.Id, locationDTO.Name);
 		}

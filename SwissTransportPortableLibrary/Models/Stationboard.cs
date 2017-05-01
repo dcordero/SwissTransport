@@ -5,7 +5,7 @@ namespace SwissTransportPortableLibrary.Models
     {
 		public Location Station { get; private set; }
 
-		public Stationboard(Location station)
+		internal Stationboard(Location station)
 		{
 			Station = station;
 		}

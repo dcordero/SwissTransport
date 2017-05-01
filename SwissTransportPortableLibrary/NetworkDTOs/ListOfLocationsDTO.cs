@@ -5,9 +5,9 @@ using System.Runtime.Serialization;
 namespace SwissTransportPortableLibrary.NetworkDTOs
 {
     [DataContract]
-    public class ListOfLocationsDTO
+    class ListOfLocationsDTO
     {
         [DataMember(Name = "stations")]
-        public List<LocationDTO> Locations { get; set; }
+        internal List<LocationDTO> Locations { get; set; }
     }
 }
