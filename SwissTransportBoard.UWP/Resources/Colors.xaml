@@ -1,0 +1,9 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SwissTransportBoard.UWP.Resources">
+
+    <SolidColorBrush x:Key="SbbBlue" Color="#0D2B88" />
+    <SolidColorBrush x:Key="SbbRed" Color="#FD1813" />
+
+</ResourceDictionary>
