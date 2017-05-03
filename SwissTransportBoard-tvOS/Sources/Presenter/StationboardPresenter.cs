@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Threading.Tasks;
 using SwissTransportBoard.View;
-using SwissTransportLibrary;
+using SwissTransportPortableLibrary;
+using SwissTransportPortableLibrary.Models;
 
 namespace SwissTransportBoard.Presenter
 {
@@ -33,14 +33,14 @@ namespace SwissTransportBoard.Presenter
 
         private async void FetchLocationsAsync()
         {
-			/*
             SwissTransport swissTransport = new SwissTransport();
-            List<Location> listOfLocations = await swissTransport.GetLocations("Oerlikon");
-            Stationboard stationboard = await swissTransport.GetStationBoard(listOfLocations[0].Id);
-*/
+            System.Collections.Generic.List<Location> listOfLocations = await swissTransport.GetLocations("Oerlikon");
+            Stationboard stationboard = await swissTransport.GetStationBoard("Oerlikon", listOfLocations[0].Id);
 
+            /*
 			SwissTransport swissTransport = new SwissTransport();
             var listOfLocations = await swissTransport.GetLocations();
+            */
 
             var i = 0;
         }
