@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SwissTransportPortableLibrary.Models;
 using SwissTransportPortableLibrary.NetworkDTOs;
 
@@ -6,6 +7,16 @@ namespace SwissTransportPortableLibrary.Transformers
 {
     class StopDTOToModel
     {
+		internal static List<Stop> Transform(List<StopDTO> stopsDTO)
+		{
+			List<Stop> stops = new List<Stop>();
+			foreach (StopDTO stopDTO in stopsDTO)
+			{
+				stops.Add(Transform(stopDTO));
+			}
+			return stops;
+		}
+
         internal static Stop Transform(StopDTO stopDTO)
         {
             return new Stop(LocationsDTOToModel.Transform(stopDTO.Station),

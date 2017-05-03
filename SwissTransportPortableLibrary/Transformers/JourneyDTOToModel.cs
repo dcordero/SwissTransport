@@ -19,7 +19,10 @@ namespace SwissTransportPortableLibrary.Transformers
 
         private static Journey Transform(JourneyDTO journeyDTO)
         {
-            return new Journey(journeyDTO.Name, journeyDTO.To, StopDTOToModel.Transform(journeyDTO.Stop));
+            return new Journey(journeyDTO.Name, 
+                               journeyDTO.To, 
+                               StopDTOToModel.Transform(journeyDTO.Stop),
+                               StopDTOToModel.Transform(journeyDTO.PassList));
         }
     }
 }

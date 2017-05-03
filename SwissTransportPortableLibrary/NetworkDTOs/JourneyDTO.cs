@@ -15,5 +15,8 @@ namespace SwissTransportPortableLibrary.NetworkDTOs
 
         [DataMember(Name = "stop")]
         internal StopDTO Stop { get; set; }
+
+        [DataMember(Name = "passList")]
+        internal List<StopDTO> PassList { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace SwissTransportPortableLibrary.NetworkDTOs
         internal String Departure { get; set; }
 
         [DataMember(Name = "departureTimestamp")]
-        internal int DepartureTimeStamp { get; set; }
+        internal int? DepartureTimeStamp { get; set; }
 
         [DataMember(Name = "platform")]
         internal String Platform { get; set; }
