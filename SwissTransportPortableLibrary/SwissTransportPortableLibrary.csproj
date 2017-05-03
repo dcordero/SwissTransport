@@ -44,7 +44,8 @@
     <Compile Include="SwissTransport.cs" />
     <Compile Include="Models\Stop.cs" />
     <Compile Include="Transformers\StopDTOToModel.cs" />
-    <Compile Include="Transportation.cs" />
+    <Compile Include="Models\StationboardType.cs" />
+    <Compile Include="Models\Transportation.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

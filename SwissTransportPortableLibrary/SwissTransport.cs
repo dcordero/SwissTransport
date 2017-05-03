@@ -32,7 +32,8 @@ namespace SwissTransportPortableLibrary
                                                         string stationId = null, 
                                                         List<Transportation> transportations = null,
                                                         DateTime? dateTime = null,
-                                                        int? limit = null)
+                                                        int? limit = null,
+                                                        StationboardType? type = null)
         {
             var parameters = new Dictionary<string, object>
             {
@@ -40,7 +41,8 @@ namespace SwissTransportPortableLibrary
                 ["id"] = stationId,
                 ["transportations"] = transportations.Select(x => x.GetString()).ToList(),
                 ["datetime"] = dateTime?.ToString("yyyy-MM-dd HH:mm"),
-                ["limit"] = limit?.ToString()
+                ["limit"] = limit?.ToString(),
+                ["type"] = type?.GetString()
             };
 
             var stationboardDTO = await ApiClient.HttpGet<StationboardDTO>("stationboard", parameters);

@@ -12,6 +12,6 @@ namespace SwissTransportPortableLibrary.Models
         {
             Station = station;
             Journeys = journeys;
-		}
+        }
     }
 }
