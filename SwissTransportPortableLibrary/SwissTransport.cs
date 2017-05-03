@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Linq;
 using System.Collections.Generic;
 using SwissTransportPortableLibrary.Models;
 using SwissTransportPortableLibrary.NetworkDTOs;
@@ -18,7 +19,7 @@ namespace SwissTransportPortableLibrary
 
         public async Task<List<Location>> GetLocations(string locationName)
         {
-            var parameters = new Dictionary<string, string> 
+            var parameters = new Dictionary<string, object> 
             { 
                 ["query"] = locationName 
             };
@@ -29,15 +30,15 @@ namespace SwissTransportPortableLibrary
 
         public async Task<Stationboard> GetStationBoard(string stationName, 
                                                         string stationId = null, 
-                                                        Transportation? transportation = null,
+                                                        List<Transportation> transportations = null,
                                                         DateTime? dateTime = null,
                                                         int? limit = null)
         {
-            var parameters = new Dictionary<string, string>
+            var parameters = new Dictionary<string, object>
             {
                 ["station"] = stationName,
                 ["id"] = stationId,
-                ["transportations"] = transportation?.GetString(),
+                ["transportations"] = transportations.Select(x => x.GetString()).ToList(),
                 ["datetime"] = dateTime?.ToString("yyyy-MM-dd HH:mm"),
                 ["limit"] = limit?.ToString()
             };

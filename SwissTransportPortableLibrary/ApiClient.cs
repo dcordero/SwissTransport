@@ -31,15 +31,9 @@ namespace SwissTransportPortableLibrary
             return apiClient;
         }
 
-        internal async Task<T> HttpGet<T>(String path, Dictionary<string, string> parameters) where T : class
+        internal async Task<T> HttpGet<T>(String path, Dictionary<string, object> parameters) where T : class
         {
-            var queryString = new List<String>();
-            foreach (KeyValuePair<string, string> parameter in parameters)
-            {
-                if (parameter.Value != null) queryString.Add(parameter.Key + "=" + parameter.Value);
-            }
-            var url = path + "?" + String.Join("&", queryString);
-
+            var url = path + QueryString(parameters);
             HttpResponseMessage response = await httpClient.GetAsync(url);
             if (!response.IsSuccessStatusCode)
             {
@@ -53,5 +47,32 @@ namespace SwissTransportPortableLibrary
                 return _serializer.Deserialize<T>(json);
             }
         }
+
+        #region Private
+
+        private String QueryString(Dictionary<string, object> parameters)
+        {
+            var queryString = new List<String>();
+            foreach (KeyValuePair<string, object> parameter in parameters)
+            {
+                if (parameter.Value == null) continue;
+
+                var listOfObjects = parameter.Value as List<string>;
+                if (listOfObjects != null)
+                {
+                    foreach (object value in listOfObjects) {
+                        queryString.Add(parameter.Key + "[]=" + value);
+                    }
+                }
+                else
+                {
+                    queryString.Add(parameter.Key + "=" + parameter.Value);
+                }
+            }
+
+            return "?" + String.Join("&", queryString);
+        }
+
+        #endregion
     }
 }

@@ -32,11 +32,12 @@ namespace SwissTransportBoard.Presenter
             SwissTransport swissTransport = new SwissTransport();
             List<Location> listOfLocations = await swissTransport.GetLocations("Oerlikon");
 
-            Stationboard stationboard = await swissTransport.GetStationBoard("Oerlikon", 
-                                                                             listOfLocations[0].Id, 
-                                                                             Transportation.Bus,
-                                                                             DateTime.Now.AddHours(2),
-                                                                             4);
+            Stationboard stationboard = await swissTransport.GetStationBoard(
+                "Oerlikon",
+                listOfLocations[0].Id,
+                new List<Transportation>() { Transportation.TramwayUnderground, Transportation.Bus },
+                DateTime.Now.AddMinutes(10),
+                4);
 
             UpdateUI(stationboard);
         }
@@ -45,7 +46,7 @@ namespace SwissTransportBoard.Presenter
         {
             var journeyViewModels = new List<JourneyViewModel>();
             foreach (var journey in stationboard.Journeys) {
-				string stopTime = journey.Stop.Departure?.ToString();
+                string stopTime = journey.Stop.Departure?.ToString();
                 
                 journeyViewModels.Add(new JourneyViewModel(journey.Name, stopTime, new List<string>(), ""));
             }
