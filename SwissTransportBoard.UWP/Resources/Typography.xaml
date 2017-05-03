@@ -1,0 +1,47 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SwissTransportBoard.UWP.Resources">
+
+    <FontFamily x:Key="FontRegular">ms-appx:/Fonts/Compasse-Regular.otf#Compasse</FontFamily>
+    <FontFamily x:Key="FontMedium">ms-appx:/Fonts/HelveticaNeueLTStd-Md.otf##Helvetica Neue LT Std</FontFamily>
+    <FontFamily x:Key="FontBold">ms-appx:/Fonts/HelveticaNeueLTStd-Bd.otf#Helvetica Neue LT Std</FontFamily>
+
+    <Style x:Key="ScheduleHeader" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#FAFAFA" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="FontWeight" Value="Medium" />
+        <Setter Property="FontFamily" Value="{StaticResource FontMedium}" />
+    </Style>
+
+    <Style x:Key="ScheduleBase" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="#FAFAFA" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+        <Setter Property="FontSize" Value="28" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontFamily" Value="{StaticResource FontBold}" />
+    </Style>
+
+    <Style x:Key="TrainSName" TargetType="TextBlock" BasedOn="{StaticResource ScheduleBase}">
+        <Setter Property="Foreground" Value="#0a0a0a" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+
+    <Style x:Key="TimeSchedule" TargetType="TextBlock" BasedOn="{StaticResource ScheduleBase}">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="GleisSchedule" TargetType="TextBlock" BasedOn="{StaticResource ScheduleBase}">
+        <Setter Property="HorizontalAlignment" Value="Center" />
+    </Style>
+    <Style x:Key="StationsSchedule" TargetType="TextBlock" BasedOn="{StaticResource ScheduleBase}">
+    </Style>
+    <Style x:Key="HinwelsSchedule" TargetType="TextBlock" BasedOn="{StaticResource ScheduleBase}">
+        <Setter Property="Foreground" Value="#D8D800" />
+        <Setter Property="FontSize" Value="20" />
+    </Style>
+
+</ResourceDictionary>
