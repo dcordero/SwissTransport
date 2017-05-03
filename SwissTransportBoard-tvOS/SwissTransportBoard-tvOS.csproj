@@ -129,9 +129,9 @@
     <Compile Include="Sources\Presenter\StationboardPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SwissTransportPortableLibrary\SwissTransportPortableLibrary.csproj">
-      <Project>{1F6113AB-F5A8-40A1-B1ED-4BC556E8A6E4}</Project>
-      <Name>SwissTransportPortableLibrary</Name>
+    <ProjectReference Include="..\SwissTransportLibrary\SwissTransportLibrary.csproj">
+      <Project>{B5068777-BCC6-409E-8488-9152DC5686AD}</Project>
+      <Name>SwissTransportLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\TVOS\Xamarin.TVOS.CSharp.targets" />

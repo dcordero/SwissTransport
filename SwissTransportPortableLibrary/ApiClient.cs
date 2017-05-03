@@ -29,9 +29,20 @@ namespace SwissTransportPortableLibrary
         }
 
 
-        internal async Task<T> HttpGet<T>(String path) where T : class
+        internal async Task<T> HttpGet<T>(String basePath, Dictionary<string, string> parameters) where T : class
         {
-            HttpResponseMessage response = await httpClient.GetAsync(path);
+            var urlBuilder = new UriBuilder(basePath);
+
+            /*
+            var urlParameters = HttpUtility.ParseQueryString(string.Empty);
+            foreach(KeyValuePair<string, string> parameter in parameters)
+            {
+                urlParameters[parameter.Key] = parameter.Value;
+            }
+            */
+            urlBuilder.Query = ""; //urlParameters.ToString();
+
+            HttpResponseMessage response = await httpClient.GetAsync(urlBuilder.Uri);
             var responseContent = await response.Content.ReadAsStringAsync();
 
             if (!response.IsSuccessStatusCode)
