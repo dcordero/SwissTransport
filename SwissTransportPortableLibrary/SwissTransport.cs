@@ -30,14 +30,16 @@ namespace SwissTransportPortableLibrary
         public async Task<Stationboard> GetStationBoard(string stationName, 
                                                         string stationId = null, 
                                                         Transportation? transportation = null,
-                                                        DateTime? dateTime = null)
+                                                        DateTime? dateTime = null,
+                                                        int? limit = null)
         {
-            var parameters = new Dictionary<string, string> 
-            { 
+            var parameters = new Dictionary<string, string>
+            {
                 ["station"] = stationName,
                 ["id"] = stationId,
                 ["transportations"] = transportation?.GetString(),
-                ["datetime"] = dateTime?.ToString("yyyy-MM-dd HH:mm")
+                ["datetime"] = dateTime?.ToString("yyyy-MM-dd HH:mm"),
+                ["limit"] = limit?.ToString()
             };
 
             var stationboardDTO = await ApiClient.HttpGet<StationboardDTO>("stationboard", parameters);
