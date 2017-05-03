@@ -11,6 +11,7 @@ namespace SwissTransportPortableLibrary
     class ApiClient
     {
         private const string ApiBaseAddress = "http://transport.opendata.ch/v1/";
+
         private JsonSerializer _serializer = new JsonSerializer();
 
         private HttpClient httpClient { get; set; }
@@ -30,9 +31,16 @@ namespace SwissTransportPortableLibrary
             return apiClient;
         }
 
-        internal async Task<T> HttpGet<T>(String path) where T : class
+        internal async Task<T> HttpGet<T>(String path, Dictionary<string, string> parameters) where T : class
         {
-            HttpResponseMessage response = await httpClient.GetAsync(path);
+            var queryString = new List<String>();
+            foreach (KeyValuePair<string, string> parameter in parameters)
+            {
+                if (parameter.Value != null) queryString.Add(parameter.Key + "=" + parameter.Value);
+            }
+            var url = path + "?" + String.Join("&", queryString);
+
+            HttpResponseMessage response = await httpClient.GetAsync(url);
             if (!response.IsSuccessStatusCode)
             {
                 throw new HttpRequestException();

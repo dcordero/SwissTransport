@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using SwissTransportBoard.View;
 using SwissTransportPortableLibrary;
 using SwissTransportPortableLibrary.Models;
+using System.Collections.Generic;
 
 namespace SwissTransportBoard.Presenter
 {
@@ -36,7 +36,14 @@ namespace SwissTransportBoard.Presenter
         {
             SwissTransport swissTransport = new SwissTransport();
             List<Location> listOfLocations = await swissTransport.GetLocations("Oerlikon");
-            Stationboard stationboard = await swissTransport.GetStationBoard(listOfLocations[0].Id);
+            Stationboard stationboard = await swissTransport.GetStationBoard("Oerlikon", listOfLocations[0].Id);
+
+            /*
+            SwissTransport swissTransport = new SwissTransport();
+            var listOfLocations = await swissTransport.GetLocations();
+            */
+
+            var i = 0;
         }
 
         #endregion

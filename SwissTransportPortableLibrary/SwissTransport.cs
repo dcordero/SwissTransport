@@ -18,13 +18,24 @@ namespace SwissTransportPortableLibrary
 
         public async Task<List<Location>> GetLocations(string locationName)
         {
-            var listOfLocationsDTO = await ApiClient.HttpGet<ListOfLocationsDTO>(String.Format("locations?query={0}", locationName));
+            var parameters = new Dictionary<string, string> 
+            { 
+                ["query"] = locationName 
+            };
+
+            var listOfLocationsDTO = await ApiClient.HttpGet<ListOfLocationsDTO>("locations", parameters);
             return LocationsDTOToModel.Transform(listOfLocationsDTO);
         }
 
-        public async Task<Stationboard> GetStationBoard(string stationId)
+        public async Task<Stationboard> GetStationBoard(string stationName, string stationId = null)
         {
-            var stationboardDTO = await ApiClient.HttpGet<StationboardDTO>(String.Format("stationboard?station={0}", stationId));
+            var parameters = new Dictionary<string, string> 
+            { 
+                ["station"] = stationName,
+                ["id"] = stationId
+            };
+
+            var stationboardDTO = await ApiClient.HttpGet<StationboardDTO>("stationboard", parameters);
             return StationboardDTOToModel.Transform(stationboardDTO);
         }
 
