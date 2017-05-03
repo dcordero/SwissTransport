@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using SwissTransportBoard.View;
 using SwissTransportPortableLibrary;
 using SwissTransportPortableLibrary.Models;
@@ -31,7 +31,7 @@ namespace SwissTransportBoard.Presenter
         {
             SwissTransport swissTransport = new SwissTransport();
             List<Location> listOfLocations = await swissTransport.GetLocations("Oerlikon");
-            Stationboard stationboard = await swissTransport.GetStationBoard("Oerlikon", listOfLocations[0].Id);
+            Stationboard stationboard = await swissTransport.GetStationBoard("Oerlikon", listOfLocations[0].Id, Transportation.Bus);
 
             UpdateUI(stationboard);
         }
@@ -40,7 +40,9 @@ namespace SwissTransportBoard.Presenter
         {
             var journeyViewModels = new List<JourneyViewModel>();
             foreach (var journey in stationboard.Journeys) {
-                journeyViewModels.Add(new JourneyViewModel(journey.Name, "", new List<string>(), ""));
+				string stopTime = journey.Stop.Departure?.ToString();
+                
+                journeyViewModels.Add(new JourneyViewModel(journey.Name, stopTime, new List<string>(), ""));
             }
 
             IStationboardUI MyView;
