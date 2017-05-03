@@ -15,7 +15,7 @@ namespace SwissTransportPortableLibrary
         TramwayUnderground
     };
 
-    internal static class TransportationMethods
+    static class TransportationMethods
     {
         public static String GetString(this Transportation transportation)
         {
@@ -42,7 +42,7 @@ namespace SwissTransportPortableLibrary
 				case Transportation.TramwayUnderground:
                     return "tramway_underground";
                 default:
-                    return "";
+                    throw new Exception();
 			}
         }
     }

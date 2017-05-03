@@ -31,7 +31,10 @@ namespace SwissTransportBoard.Presenter
         {
             SwissTransport swissTransport = new SwissTransport();
             List<Location> listOfLocations = await swissTransport.GetLocations("Oerlikon");
-            Stationboard stationboard = await swissTransport.GetStationBoard("Oerlikon", listOfLocations[0].Id, Transportation.Bus);
+
+            Stationboard stationboard = await swissTransport.GetStationBoard("Oerlikon", 
+                                                                             listOfLocations[0].Id, 
+                                                                             Transportation.Bus);
 
             UpdateUI(stationboard);
         }
