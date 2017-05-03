@@ -27,23 +27,23 @@ namespace SwissTransportPortableLibrary
                     return "ec_ic";
                 case Transportation.Ir:
                     return "ir";
-				case Transportation.ReD:
+                case Transportation.ReD:
                     return "re_d";
-				case Transportation.Ship:
+                case Transportation.Ship:
                     return "ship";
-				case Transportation.SSNR:
+                case Transportation.SSNR:
                     return "s_sn_r";
-				case Transportation.Bus:
+                case Transportation.Bus:
                     return "bus";
-				case Transportation.Cableway:
+                case Transportation.Cableway:
                     return "cableway";
-				case Transportation.ArzExt:
+                case Transportation.ArzExt:
                     return "arz_ext";
-				case Transportation.TramwayUnderground:
+                case Transportation.TramwayUnderground:
                     return "tramway_underground";
                 default:
                     throw new Exception();
-			}
+            }
         }
     }
 }
