@@ -3,6 +3,7 @@ using SwissTransportBoard.View;
 using SwissTransportPortableLibrary;
 using SwissTransportPortableLibrary.Models;
 using System.Collections.Generic;
+using SwissTransportBoard.Sources.View.Model;
 
 namespace SwissTransportBoard.Presenter
 {
@@ -20,12 +21,6 @@ namespace SwissTransportBoard.Presenter
         public void ViewDidLoad()
         {
             FetchLocationsAsync();
-
-            IStationboardUI MyView;
-            if (View.TryGetTarget(out MyView))
-            {
-                MyView.Configure();
-            }
         }
 
         #endregion
@@ -38,12 +33,21 @@ namespace SwissTransportBoard.Presenter
             List<Location> listOfLocations = await swissTransport.GetLocations("Oerlikon");
             Stationboard stationboard = await swissTransport.GetStationBoard("Oerlikon", listOfLocations[0].Id);
 
-            /*
-            SwissTransport swissTransport = new SwissTransport();
-            var listOfLocations = await swissTransport.GetLocations();
-            */
+            UpdateUI(stationboard);
+        }
 
-            var i = 0;
+        private void UpdateUI(Stationboard stationboard)
+        {
+            var journeyViewModels = new List<JourneyViewModel>();
+            foreach (var journey in stationboard.Journeys) {
+                journeyViewModels.Add(new JourneyViewModel(journey.Name, "", new List<string>(), ""));
+            }
+
+            IStationboardUI MyView;
+            if (View.TryGetTarget(out MyView))
+            {
+                MyView.Configure(journeyViewModels);
+            }
         }
 
         #endregion

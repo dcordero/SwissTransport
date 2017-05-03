@@ -2,15 +2,17 @@
 using UIKit;
 using SwissTransportBoard.Presenter;
 using SwissTransportBoard.View;
+using System.Collections.Generic;
+using SwissTransportBoard.Sources.View.Model;
 
 namespace SwissTransportBoard
 {
     public class StationboardViewController : UIViewController, IStationboardUI
     {
         public IStationboardPresenter Presenter { get; set; }
-        public UITableViewDataSource DataSource { get; set; }
+        public StationboardViewControllerDataSource DataSource { get; set; }
 
-        private UITableView tableView;
+        private UITableView TableView;
 
         #region UIViewController
 
@@ -21,13 +23,14 @@ namespace SwissTransportBoard
             Presenter.ViewDidLoad();
         }
 
-        #endregion
+		#endregion
 
-        #region IStationboardUI
+		#region IStationboardUI
 
-        public void Configure()
+		public void Configure(List<JourneyViewModel> journeys)
         {
-            View.BackgroundColor = UIColor.Purple;
+            DataSource.Items = journeys;
+            TableView.ReloadData();
         }
 
         #endregion
@@ -36,16 +39,19 @@ namespace SwissTransportBoard
 
         private void SetUpView()
         {
-            tableView = new UITableView();
-            tableView.DataSource = DataSource;
-            StationboardCell.RegisterCellForReuse(tableView);
-            View.AddSubview(tableView);
+            View.BackgroundColor = UIColor.Blue;
 
-            tableView.TranslatesAutoresizingMaskIntoConstraints = false;
-            tableView.LeadingAnchor.ConstraintEqualTo(this.View.LeadingAnchor).Active = true;
-            tableView.TrailingAnchor.ConstraintEqualTo(this.View.TrailingAnchor).Active = true;
-            tableView.TopAnchor.ConstraintEqualTo(this.View.TopAnchor).Active = true;
-            tableView.BottomAnchor.ConstraintEqualTo(this.View.BottomAnchor).Active = true;
+            TableView = new UITableView();
+            TableView.UserInteractionEnabled = false;
+            TableView.DataSource = DataSource;
+            StationboardCell.RegisterCellForReuse(TableView);
+            View.AddSubview(TableView);
+
+            TableView.TranslatesAutoresizingMaskIntoConstraints = false;
+            TableView.LeadingAnchor.ConstraintEqualTo(this.View.LeadingAnchor).Active = true;
+            TableView.TrailingAnchor.ConstraintEqualTo(this.View.TrailingAnchor).Active = true;
+            TableView.TopAnchor.ConstraintEqualTo(this.View.TopAnchor).Active = true;
+            TableView.BottomAnchor.ConstraintEqualTo(this.View.BottomAnchor).Active = true;
         }
 
         #endregion

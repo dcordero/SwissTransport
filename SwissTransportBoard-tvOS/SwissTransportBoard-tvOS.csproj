@@ -112,6 +112,7 @@
     <Folder Include="Sources\" />
     <Folder Include="Sources\View\" />
     <Folder Include="Sources\Presenter\" />
+    <Folder Include="Sources\View\Model\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -127,6 +128,7 @@
     <Compile Include="Sources\View\StationboardViewControllerDataSource.cs" />
     <Compile Include="Sources\Presenter\IStationboardPresenter.cs" />
     <Compile Include="Sources\Presenter\StationboardPresenter.cs" />
+    <Compile Include="Sources\View\Model\JourneyViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SwissTransportPortableLibrary\SwissTransportPortableLibrary.csproj">
