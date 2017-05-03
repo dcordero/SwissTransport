@@ -34,7 +34,7 @@ namespace SwissTransportPortableLibrary
         internal async Task<T> HttpGet<T>(String path, Dictionary<string, string> parameters) where T : class
         {
             var queryString = new List<String>();
-			foreach (KeyValuePair<string, string> parameter in parameters)
+            foreach (KeyValuePair<string, string> parameter in parameters)
             {
                 if (parameter.Value != null) queryString.Add(parameter.Key + "=" + parameter.Value);
             }

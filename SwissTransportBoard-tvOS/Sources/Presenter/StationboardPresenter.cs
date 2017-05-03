@@ -38,7 +38,7 @@ namespace SwissTransportBoard.Presenter
             Stationboard stationboard = await swissTransport.GetStationBoard("Oerlikon", listOfLocations[0].Id);
 
             /*
-			SwissTransport swissTransport = new SwissTransport();
+            SwissTransport swissTransport = new SwissTransport();
             var listOfLocations = await swissTransport.GetLocations();
             */
 
