@@ -4,12 +4,14 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
+using System.IO;
 
 namespace SwissTransportPortableLibrary
 {
     class ApiClient
     {
         private const string ApiBaseAddress = "http://transport.opendata.ch/v1/";
+        private JsonSerializer _serializer = new JsonSerializer();
 
         private HttpClient httpClient { get; set; }
 
@@ -28,7 +30,6 @@ namespace SwissTransportPortableLibrary
             return apiClient;
         }
 
-
         internal async Task<T> HttpGet<T>(String basePath, Dictionary<string, string> parameters) where T : class
         {
             var urlBuilder = new UriBuilder(basePath);
@@ -39,18 +40,21 @@ namespace SwissTransportPortableLibrary
             {
                 urlParameters[parameter.Key] = parameter.Value;
             }
-            */
             urlBuilder.Query = ""; //urlParameters.ToString();
+            */
 
-            HttpResponseMessage response = await httpClient.GetAsync(urlBuilder.Uri);
-            var responseContent = await response.Content.ReadAsStringAsync();
-
+            HttpResponseMessage response = await httpClient.GetAsync(path);
             if (!response.IsSuccessStatusCode)
             {
-                throw new Exception();
+                throw new HttpRequestException();
             }
 
-            return JsonConvert.DeserializeObject<T>(responseContent);
+            using (var stream = await response.Content.ReadAsStreamAsync())
+            using (var reader = new StreamReader(stream))
+            using (var json = new JsonTextReader(reader))
+            {
+                return _serializer.Deserialize<T>(json);
+            }
         }
     }
 }
