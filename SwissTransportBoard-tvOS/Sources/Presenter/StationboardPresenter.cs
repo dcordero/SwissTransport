@@ -34,7 +34,8 @@ namespace SwissTransportBoard.Presenter
 
             Stationboard stationboard = await swissTransport.GetStationBoard("Oerlikon", 
                                                                              listOfLocations[0].Id, 
-                                                                             Transportation.Bus);
+                                                                             Transportation.Bus,
+                                                                             DateTime.Now.AddHours(2));
 
             UpdateUI(stationboard);
         }
