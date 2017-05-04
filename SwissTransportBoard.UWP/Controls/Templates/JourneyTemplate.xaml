@@ -9,17 +9,17 @@
     d:DesignHeight="300"
     d:DesignWidth="400">
 
-    <Grid VerticalAlignment="Top" BorderBrush="#FAFAFA" BorderThickness="0 0 0 2" Padding="0 6">
+    <Grid VerticalAlignment="Top" BorderBrush="#FAFAFA" BorderThickness="0 0 0 2" Padding="0 8">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="132" />
-            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="252" />
+            <ColumnDefinition Width="240" />
             <ColumnDefinition />
-            <ColumnDefinition Width="100" />
-            <ColumnDefinition Width="320" />
+            <ColumnDefinition Width="168" />
+            <ColumnDefinition Width="400" />
         </Grid.ColumnDefinitions>
 
-        <Border Background="#FAFAFA" HorizontalAlignment="Right" Width="80">
-            <TextBlock Style="{StaticResource TrainSName}" Text="{Binding Name}" />
+        <Border Background="#FAFAFA" HorizontalAlignment="Right" Width="160">
+            <TextBlock Style="{StaticResource TrainSName}" x:Name="txtName" Padding="0 2" />
         </Border>
         <TextBlock Grid.Column="1" x:Name="txtDeparture" Style="{StaticResource TimeSchedule}" />
 

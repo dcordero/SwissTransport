@@ -28,6 +28,16 @@ namespace SwissTransportPortableLibrary
             return LocationsDTOToModel.Transform(listOfLocationsDTO);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="stationName"></param>
+        /// <param name="stationId"></param>
+        /// <param name="transportations"></param>
+        /// <param name="dateTime">Get board starting at</param>
+        /// <param name="limit"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public async Task<Stationboard> GetStationBoard(string stationName, 
                                                         string stationId = null, 
                                                         List<Transportation> transportations = null,

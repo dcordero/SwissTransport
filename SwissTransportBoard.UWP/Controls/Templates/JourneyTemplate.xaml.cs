@@ -32,6 +32,7 @@ namespace SwissTransportBoard.UWP.Controls.Templates
             {
                 var journey = this.DataContext as Journey;
                 txtDeparture.Text = journey.Stop.Departure?.ToString("hh:mm");
+                txtName.Text = journey.Name.ToUpper().StartsWith("IR") ? "IR" : journey.Name.Replace(" ", "");
             }
         }
     }
