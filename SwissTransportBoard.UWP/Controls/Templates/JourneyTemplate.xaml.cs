@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -33,6 +34,26 @@ namespace SwissTransportBoard.UWP.Controls.Templates
                 var journey = this.DataContext as Journey;
                 txtDeparture.Text = journey.Stop.Departure?.ToString("hh:mm");
                 txtName.Text = journey.Name.ToUpper().StartsWith("IR") ? "IR" : journey.Name.Replace(" ", "");
+
+                if (journey.PassList != null & journey.PassList.Count > 1)
+                {
+                    StringBuilder sb = new StringBuilder();
+
+                    foreach (var item in journey.PassList.Skip(1).Take(3))
+                    {
+                        sb.Append(item.Station.Name);
+                        sb.Append("   ");
+                    }
+                    //sb.Append(journey.To);
+
+                    txtTo.Text = sb.ToString();
+                }
+                else
+                {
+                    txtTo.Text = journey.To;
+                }
+
+                var x = journey.PassList;
             }
         }
     }

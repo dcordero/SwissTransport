@@ -16,14 +16,14 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <TextBlock x:Name="txtStationName" Foreground="#FAFAFA" FontFamily="{StaticResource FontBold}" FontSize="80" Padding="50 12 0 20" />
+        <TextBlock x:Name="txtStationName" Foreground="#FAFAFA" FontFamily="{StaticResource FontBold}" FontSize="80" Padding="92 12 0 20" />
 
         <Grid Grid.Row="1" VerticalAlignment="Bottom" BorderBrush="#FAFAFA" BorderThickness="0 0 0 2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="492"/>
+                <ColumnDefinition Width="344"/>
                 <ColumnDefinition />
                 <ColumnDefinition Width="160" />
-                <ColumnDefinition Width="400" />
+                <ColumnDefinition Width="300" />
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Column="1" Style="{StaticResource ScheduleHeader}" Text="Nach" />

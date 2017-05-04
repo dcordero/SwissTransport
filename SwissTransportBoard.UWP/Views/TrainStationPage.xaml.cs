@@ -33,7 +33,7 @@ namespace SwissTransportBoard.UWP.Views
             _client = new SwissTransportPortableLibrary.SwissTransport();
 
             this.Loaded += TrainStationPage_Loaded;
-            dt.Interval = TimeSpan.FromMinutes(1);
+            dt.Interval = TimeSpan.FromSeconds(60);
             dt.Tick += Dt_Tick;
         }
 
@@ -55,9 +55,10 @@ namespace SwissTransportBoard.UWP.Views
             transportations.Add(Transportation.SSNR);
             var board = await _client.GetStationBoard(null, _locationId, transportations, DateTime.Now.AddMinutes(5), 12);
 
-            txtTime.Text = DateTime.Now.ToString("HH:mm");
             pnlJourneys.Children.Clear();
-            foreach (var item in board.Journeys.Take(15))
+            txtTime.Text = DateTime.Now.ToString("HH:mm");
+
+            foreach (var item in board.Journeys)
             {
                 JourneyTemplate template = new JourneyTemplate();
                 template.DataContext = item;

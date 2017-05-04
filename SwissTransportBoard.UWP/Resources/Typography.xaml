@@ -27,7 +27,7 @@
         <Setter Property="Foreground" Value="#FAFAFA" />
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="HorizontalAlignment" Value="Left" />
-        <Setter Property="FontSize" Value="56" />
+        <Setter Property="FontSize" Value="48" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="FontFamily" Value="{StaticResource FontBold}" />
     </Style>
