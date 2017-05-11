@@ -1,7 +1,7 @@
 ﻿﻿using System;
 using SwissTransportBoard.View;
-using SwissTransportPortableLibrary;
-using SwissTransportPortableLibrary.Models;
+using SwissTransport;
+using SwissTransport.Models;
 using System.Collections.Generic;
 using SwissTransportBoard.Sources.View.Model;
 
@@ -29,10 +29,10 @@ namespace SwissTransportBoard.Presenter
 
         private async void FetchLocationsAsync()
         {
-            SwissTransport swissTransport = new SwissTransport();
-            List<Location> listOfLocations = await swissTransport.GetLocations("Oerlikon");
+            SwissTransportClient swissTransportClient = new SwissTransportClient();
+            List<Location> listOfLocations = await swissTransportClient.GetLocations("Oerlikon");
 
-            Stationboard stationboard = await swissTransport.GetStationBoard(
+            Stationboard stationboard = await swissTransportClient.GetStationBoard(
                 "Oerlikon",
                 listOfLocations[0].Id,
                 new List<Transportation>() { Transportation.TramwayUnderground, Transportation.Bus },

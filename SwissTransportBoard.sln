@@ -1,0 +1,33 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwissTransportBoard.tvOS", "SwissTransportBoard.tvOS\SwissTransportBoard.tvOS.csproj", "{0A1E2468-29E4-4DC8-8F7A-A89BE087B77C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwissTransportBoard.UWP", "SwissTransportBoard.UWP\SwissTransportBoard.UWP.csproj", "{1E9F1CA0-6EE5-415D-993E-D53F7646F5FA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0A1E2468-29E4-4DC8-8F7A-A89BE087B77C}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{0A1E2468-29E4-4DC8-8F7A-A89BE087B77C}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{0A1E2468-29E4-4DC8-8F7A-A89BE087B77C}.Release|iPhone.ActiveCfg = Release|iPhone
+		{0A1E2468-29E4-4DC8-8F7A-A89BE087B77C}.Release|iPhone.Build.0 = Release|iPhone
+		{0A1E2468-29E4-4DC8-8F7A-A89BE087B77C}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{0A1E2468-29E4-4DC8-8F7A-A89BE087B77C}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{0A1E2468-29E4-4DC8-8F7A-A89BE087B77C}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{0A1E2468-29E4-4DC8-8F7A-A89BE087B77C}.Debug|iPhone.Build.0 = Debug|iPhone
+		{1E9F1CA0-6EE5-415D-993E-D53F7646F5FA}.Debug|iPhoneSimulator.ActiveCfg = Debug|x86
+		{1E9F1CA0-6EE5-415D-993E-D53F7646F5FA}.Debug|iPhoneSimulator.Build.0 = Debug|x86
+		{1E9F1CA0-6EE5-415D-993E-D53F7646F5FA}.Release|iPhone.ActiveCfg = Release|x86
+		{1E9F1CA0-6EE5-415D-993E-D53F7646F5FA}.Release|iPhone.Build.0 = Release|x86
+		{1E9F1CA0-6EE5-415D-993E-D53F7646F5FA}.Release|iPhoneSimulator.ActiveCfg = Release|x86
+		{1E9F1CA0-6EE5-415D-993E-D53F7646F5FA}.Release|iPhoneSimulator.Build.0 = Release|x86
+		{1E9F1CA0-6EE5-415D-993E-D53F7646F5FA}.Debug|iPhone.ActiveCfg = Debug|x86
+		{1E9F1CA0-6EE5-415D-993E-D53F7646F5FA}.Debug|iPhone.Build.0 = Debug|x86
+	EndGlobalSection
+EndGlobal

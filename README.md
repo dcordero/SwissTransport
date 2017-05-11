@@ -1,1 +1,1 @@
-# 🇨🇭 SwissTransport 🚂
+# 🇨🇭 SwissTransportBoard 🚂
