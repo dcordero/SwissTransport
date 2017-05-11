@@ -1,5 +1,5 @@
 ﻿using SwissTransportBoard.UWP.Controls.Templates;
-using SwissTransportPortableLibrary;
+using SwissTransport;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,12 +25,12 @@ namespace SwissTransportBoard.UWP.Views
     /// </summary>
     public sealed partial class TrainStationPage : Page
     {
-        SwissTransportPortableLibrary.SwissTransport _client;
+        SwissTransport.SwissTransportClient _client;
         DispatcherTimer dt = new DispatcherTimer();
         public TrainStationPage()
         {
             this.InitializeComponent();
-            _client = new SwissTransportPortableLibrary.SwissTransport();
+            _client = new SwissTransport.SwissTransportClient();
 
             this.Loaded += TrainStationPage_Loaded;
             dt.Interval = TimeSpan.FromSeconds(60);
