@@ -1,4 +1,4 @@
-﻿using SwissTransportPortableLibrary.Models;
+﻿using SwissTransport.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -32,7 +32,7 @@ namespace SwissTransportBoard.UWP.Controls.Templates
             if (this.DataContext != null && this.DataContext is Journey)
             {
                 var journey = this.DataContext as Journey;
-                txtDeparture.Text = journey.Stop.Departure?.ToString("hh:mm");
+                txtDeparture.Text = journey.Stop.Departure?.ToString("HH:mm");
                 txtName.Text = journey.Name.ToUpper().StartsWith("IR") ? "IR" : journey.Name.Replace(" ", "");
 
                 if (journey.PassList != null & journey.PassList.Count > 1)
