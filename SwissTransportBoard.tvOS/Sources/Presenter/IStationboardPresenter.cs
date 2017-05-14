@@ -2,7 +2,7 @@
 
 namespace SwissTransportBoard.Presenter
 {
-    public interface IStationboardPresenter
+    internal interface IStationboardPresenter
     {
         void ViewDidLoad();
     }

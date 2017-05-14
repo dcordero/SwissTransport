@@ -173,6 +173,7 @@
     <Compile Include="Sources\Presenter\IStationboardPresenter.cs" />
     <Compile Include="Sources\Presenter\StationboardPresenter.cs" />
     <Compile Include="Sources\View\Model\JourneyViewModel.cs" />
+    <Compile Include="Sources\View\StationboardHeaderView.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\TVOS\Xamarin.TVOS.CSharp.targets" />
   <Import Project="..\packages\NuGet.Build.Packaging.0.1.248\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.1.248\build\NuGet.Build.Packaging.targets')" />

@@ -6,15 +6,15 @@ namespace SwissTransportBoard.Sources.View.Model
     public class JourneyViewModel
     {
         public String Name { get; }
-        public String Time { get; } 
-        public List<String> To { get; }
+        public String DepartureTime { get; } 
+        public String PassList { get; }
         public String Platform { get; }
 
-        internal JourneyViewModel(String name, String time, List<String> to, String platform)
+        internal JourneyViewModel(String name, String departureTime, String passList, String platform)
         {
             Name = name;
-            Time = time;
-            To = to;
+            DepartureTime = departureTime;
+            PassList = passList;
             Platform = platform;
         }
     }

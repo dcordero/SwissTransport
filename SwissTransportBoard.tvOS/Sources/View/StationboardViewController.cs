@@ -4,15 +4,18 @@ using SwissTransportBoard.Presenter;
 using SwissTransportBoard.View;
 using System.Collections.Generic;
 using SwissTransportBoard.Sources.View.Model;
+using SwissTransportBoard.Sources.View.Header;
+
 
 namespace SwissTransportBoard
 {
-    public class StationboardViewController : UIViewController, IStationboardUI
+    class StationboardViewController : UIViewController, IStationboardUI
     {
-        public IStationboardPresenter Presenter { get; set; }
-        public StationboardViewControllerDataSource DataSource { get; set; }
+        internal IStationboardPresenter Presenter { get; set; }
+        internal StationboardViewControllerDataSource DataSource { get; set; }
 
-        private UITableView TableView;
+        StationboardHeaderView HeaderView;
+        UITableView TableView;
 
         #region UIViewController
 
@@ -27,8 +30,9 @@ namespace SwissTransportBoard
 
 		#region IStationboardUI
 
-		public void Configure(List<JourneyViewModel> journeys)
+		public void Configure(String stationName, List<JourneyViewModel> journeys)
         {
+            HeaderView.StationNameLabel.Text = stationName;
             DataSource.Items = journeys;
             TableView.ReloadData();
         }
@@ -39,21 +43,63 @@ namespace SwissTransportBoard
 
         private void SetUpView()
         {
-            View.BackgroundColor = UIColor.Blue;
+            SetUpBackground();
+            SetUpHeaderView();
+            SetUpTableView();
 
+            SetUpConstraints();
+        }
+
+        private void SetUpBackground()
+        {
+            View.BackgroundColor = UIColor.Clear.FromHex(0x0D2B88);
+        }
+
+        private void SetUpHeaderView()
+        {
+            HeaderView = new StationboardHeaderView();
+
+            View.AddSubview(HeaderView);
+        }
+
+        private void SetUpTableView() 
+        {
             TableView = new UITableView();
             TableView.UserInteractionEnabled = false;
             TableView.DataSource = DataSource;
+            TableView.SeparatorInset = UIEdgeInsets.Zero;
+            TableView.RowHeight = StationboardCell.RowHeight;
             StationboardCell.RegisterCellForReuse(TableView);
+
             View.AddSubview(TableView);
+        }
+
+        private void SetUpConstraints()
+        {
+            HeaderView.TranslatesAutoresizingMaskIntoConstraints = false;
+            HeaderView.LeadingAnchor.ConstraintEqualTo(this.View.LeadingAnchor).Active = true;
+            HeaderView.TrailingAnchor.ConstraintEqualTo(this.View.TrailingAnchor).Active = true;
+            HeaderView.TopAnchor.ConstraintEqualTo(this.View.TopAnchor).Active = true;
 
             TableView.TranslatesAutoresizingMaskIntoConstraints = false;
             TableView.LeadingAnchor.ConstraintEqualTo(this.View.LeadingAnchor).Active = true;
             TableView.TrailingAnchor.ConstraintEqualTo(this.View.TrailingAnchor).Active = true;
-            TableView.TopAnchor.ConstraintEqualTo(this.View.TopAnchor).Active = true;
+            TableView.TopAnchor.ConstraintEqualTo(this.View.TopAnchor, 250).Active = true;
             TableView.BottomAnchor.ConstraintEqualTo(this.View.BottomAnchor).Active = true;
         }
 
         #endregion
     }
 }
+
+static class UIColorExtensions
+    {
+        internal static UIColor FromHex(this UIColor color,int hexValue)
+        {
+            return UIColor.FromRGB(
+                (((float)((hexValue & 0xFF0000) >> 16))/255.0f),
+                (((float)((hexValue & 0xFF00) >> 8))/255.0f),
+                (((float)(hexValue & 0xFF))/255.0f)
+            );
+        }
+    }

@@ -5,13 +5,13 @@ using UIKit;
 
 namespace SwissTransportBoard
 {
-    public class ServiceLocator
+    class ServiceLocator
     {
-        private static readonly ServiceLocator instance = new ServiceLocator();
+        static readonly ServiceLocator instance = new ServiceLocator();
 
-        private ServiceLocator() { }
+        ServiceLocator() { }
 
-        public static ServiceLocator Instance
+        internal static ServiceLocator Instance
         {
             get
             {
@@ -19,7 +19,7 @@ namespace SwissTransportBoard
             }
         }
 
-        public UIViewController ProvideStationboardViewController() 
+        internal UIViewController ProvideStationboardViewController() 
         {
             StationboardViewController viewController = new StationboardViewController();
 

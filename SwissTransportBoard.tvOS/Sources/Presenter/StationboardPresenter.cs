@@ -4,14 +4,16 @@ using SwissTransport;
 using SwissTransport.Models;
 using System.Collections.Generic;
 using SwissTransportBoard.Sources.View.Model;
+using System.Text;
+using System.Linq;
 
 namespace SwissTransportBoard.Presenter
 {
-    public class StationboardPresenter : IStationboardPresenter
+    class StationboardPresenter : IStationboardPresenter
     {
-        public WeakReference<IStationboardUI> View { get; set; }
+        WeakReference<IStationboardUI> View { get; set; } 
 
-        public StationboardPresenter(IStationboardUI view)
+        internal StationboardPresenter(IStationboardUI view)
         {
             this.View = new WeakReference<IStationboardUI>(view);
         }
@@ -32,12 +34,20 @@ namespace SwissTransportBoard.Presenter
             SwissTransportClient swissTransportClient = new SwissTransportClient();
             List<Location> listOfLocations = await swissTransportClient.GetLocations("Oerlikon");
 
+            List<Transportation> transportations = new List<Transportation>();
+            transportations.Add(Transportation.ArzExt);
+            transportations.Add(Transportation.EcIc);
+            transportations.Add(Transportation.IceTgvRj);
+            transportations.Add(Transportation.Ir);
+            transportations.Add(Transportation.ReD);
+            transportations.Add(Transportation.SSNR);
+
             Stationboard stationboard = await swissTransportClient.GetStationBoard(
                 "Oerlikon",
-                listOfLocations[0].Id,
-                new List<Transportation>() { Transportation.TramwayUnderground, Transportation.Bus },
-                DateTime.Now.AddMinutes(10),
-                4);
+                null,
+                transportations,
+                DateTime.Now,
+                10);
 
             UpdateUI(stationboard);
         }
@@ -45,18 +55,38 @@ namespace SwissTransportBoard.Presenter
         private void UpdateUI(Stationboard stationboard)
         {
             var journeyViewModels = new List<JourneyViewModel>();
-            foreach (var journey in stationboard.Journeys) {
-                string stopTime = journey.Stop.Departure?.ToString();
-                
-                journeyViewModels.Add(new JourneyViewModel(journey.Name, stopTime, new List<string>(), ""));
+
+            foreach (var journey in stationboard.Journeys.Take(7)) 
+            {
+                journeyViewModels.Add(BuildViewModel(journey));
             }
 
             IStationboardUI MyView;
             if (View.TryGetTarget(out MyView))
             {
-                MyView.Configure(journeyViewModels);
+                MyView.Configure("Oerlikon", journeyViewModels);
             }
         }
+
+        private JourneyViewModel BuildViewModel(Journey journey)
+         {
+            string passList = journey.To;
+            if (journey.PassList != null & journey.PassList.Count > 1)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (var item in journey.PassList.Skip(1).Take(3))
+                {
+                    sb.Append(item.Station.Name);
+                    sb.Append("   ");
+                }
+                passList = sb.ToString();
+            }
+
+            return new JourneyViewModel(journey.Name, 
+                                        journey.Stop.Departure?.ToString("HH:mm"), 
+                                        passList, 
+                                        journey.Stop.Platform);
+         }
 
         #endregion
     }

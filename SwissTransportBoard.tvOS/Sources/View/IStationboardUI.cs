@@ -4,8 +4,8 @@ using SwissTransportBoard.Sources.View.Model;
 
 namespace SwissTransportBoard.View
 {
-    public interface IStationboardUI
+    interface IStationboardUI
     {
-        void Configure(List<JourneyViewModel> journeys);
+        void Configure(String stationName, List<JourneyViewModel> journeys);
     }
 }

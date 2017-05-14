@@ -5,9 +5,9 @@ using UIKit;
 
 namespace SwissTransportBoard.View
 {
-    public class StationboardViewControllerDataSource : UITableViewDataSource
+    class StationboardViewControllerDataSource : UITableViewDataSource
     {
-        public List<JourneyViewModel> Items { get; set; }
+        internal List<JourneyViewModel> Items { get; set; }
 
         public override nint RowsInSection(UITableView tableView, nint section)
         {
@@ -17,7 +17,16 @@ namespace SwissTransportBoard.View
         public override UITableViewCell GetCell(UITableView tableView, Foundation.NSIndexPath indexPath)
         {
             StationboardCell cell = (StationboardCell)tableView.DequeueReusableCell(StationboardCell.ReusableIdentifier, indexPath);
-            cell.TitleLabel.Text = Items[indexPath.Row].Name;
+
+            if (indexPath.Row < Items.Count)
+            {
+                var item = Items[indexPath.Row];
+                cell.NameLabel.Text = item.Name;
+                cell.DepartureTimeLabel.Text = item.DepartureTime;
+                cell.PassListLabel.Text = item.PassList;
+                cell.PlatformLabel.Text = item.Platform;
+            }
+
             return cell;
         }
     }
