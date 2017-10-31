@@ -156,6 +156,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Sources\Modules\" />
+    <Folder Include="Sources\Modules\Board\" />
+    <Folder Include="Sources\Modules\Board\Presenter\" />
+    <Folder Include="Sources\Modules\Board\View\" />
+    <Folder Include="Sources\Modules\Selector\" />
+    <Folder Include="Sources\Modules\Selector\View\" />
+    <Folder Include="Sources\Modules\Selector\Presenter\" />
+    <Folder Include="Sources\Modules\Selector\View\Model\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -166,14 +174,21 @@
     <Compile Include="Sources\AppDelegate.cs" />
     <Compile Include="Sources\ServiceLocator.cs" />
     <Compile Include="Sources\Wireframe.cs" />
-    <Compile Include="Sources\View\IStationboardUI.cs" />
-    <Compile Include="Sources\View\StationboardCell.cs" />
-    <Compile Include="Sources\View\StationboardViewController.cs" />
-    <Compile Include="Sources\View\StationboardViewControllerDataSource.cs" />
-    <Compile Include="Sources\Presenter\IStationboardPresenter.cs" />
-    <Compile Include="Sources\Presenter\StationboardPresenter.cs" />
-    <Compile Include="Sources\View\Model\JourneyViewModel.cs" />
-    <Compile Include="Sources\View\StationboardHeaderView.cs" />
+    <Compile Include="Sources\Modules\Board\Presenter\IStationboardPresenter.cs" />
+    <Compile Include="Sources\Modules\Board\Presenter\StationboardPresenter.cs" />
+    <Compile Include="Sources\Modules\Board\View\IStationboardUI.cs" />
+    <Compile Include="Sources\Modules\Board\View\Model\JourneyViewModel.cs" />
+    <Compile Include="Sources\Modules\Board\View\StationboardCell.cs" />
+    <Compile Include="Sources\Modules\Board\View\StationboardHeaderView.cs" />
+    <Compile Include="Sources\Modules\Board\View\StationboardViewController.cs" />
+    <Compile Include="Sources\Modules\Board\View\StationboardViewControllerDataSource.cs" />
+    <Compile Include="Sources\Modules\Selector\View\IStationSelectorUI.cs" />
+    <Compile Include="Sources\Modules\Selector\View\StationSelectorViewController.cs" />
+    <Compile Include="Sources\Modules\Selector\Presenter\IStationSelectorPresenter.cs" />
+    <Compile Include="Sources\Modules\Selector\Presenter\StationSelectorPresenter.cs" />
+    <Compile Include="Sources\Modules\Selector\View\StationSelectorCell.cs" />
+    <Compile Include="Sources\Modules\Selector\View\StationSelectorViewControllerDataSource.cs" />
+    <Compile Include="Sources\Modules\Selector\View\Model\StationViewModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\TVOS\Xamarin.TVOS.CSharp.targets" />
   <Import Project="..\packages\NuGet.Build.Packaging.0.1.248\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.1.248\build\NuGet.Build.Packaging.targets')" />

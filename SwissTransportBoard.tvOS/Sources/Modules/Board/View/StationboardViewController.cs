@@ -1,13 +1,12 @@
 ﻿using System;
 using UIKit;
-using SwissTransportBoard.Presenter;
-using SwissTransportBoard.View;
+using SwissTransportBoard.Modules.Board.Presenter ;
+using SwissTransportBoard.Modules.Board.View;
+using SwissTransportBoard.Modules.Board.View.Model;
 using System.Collections.Generic;
-using SwissTransportBoard.Sources.View.Model;
-using SwissTransportBoard.Sources.View.Header;
 
 
-namespace SwissTransportBoard
+namespace SwissTransportBoard.Modules.Board.View
 {
     class StationboardViewController : UIViewController, IStationboardUI
     {

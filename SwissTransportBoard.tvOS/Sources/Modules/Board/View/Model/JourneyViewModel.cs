@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SwissTransportBoard.Sources.View.Model
+namespace SwissTransportBoard.Modules.Board.View.Model
 {
     public class JourneyViewModel
     {

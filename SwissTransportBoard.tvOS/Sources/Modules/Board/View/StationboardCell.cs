@@ -1,7 +1,7 @@
 ﻿﻿using System;
 using UIKit;
 
-namespace SwissTransportBoard
+namespace SwissTransportBoard.Modules.Board.View
 {
 
     class StationboardCell : UITableViewCell

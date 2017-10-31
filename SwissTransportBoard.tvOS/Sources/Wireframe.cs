@@ -5,7 +5,13 @@ namespace SwissTransportBoard
 {
     public class Wireframe
     {
-        public void PresentInitialViewController()
+        internal void PresentInitialViewController()
+        {
+            UIViewController viewController = ServiceLocator.Instance.ProvideStationSelectorViewController();
+            SetRootViewController(viewController);
+        }
+
+        internal void PresentStationboardViewController()
         {
             UIViewController viewController = ServiceLocator.Instance.ProvideStationboardViewController();
             SetRootViewController(viewController);

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using SwissTransportBoard.Sources.View.Model;
+using SwissTransportBoard.Modules.Board.View.Model;
 using UIKit;
 
-namespace SwissTransportBoard.View
+namespace SwissTransportBoard.Modules.Board.View
 {
     class StationboardViewControllerDataSource : UITableViewDataSource
     {

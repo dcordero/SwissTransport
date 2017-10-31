@@ -1,7 +1,7 @@
 ﻿using System;
 using UIKit;
 
-namespace SwissTransportBoard.Sources.View.Header
+namespace SwissTransportBoard.Modules.Board.View
 {
     class StationboardHeaderView: UIView
     {        

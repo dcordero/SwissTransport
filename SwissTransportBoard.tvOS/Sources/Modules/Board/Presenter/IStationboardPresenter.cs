@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SwissTransportBoard.Presenter
+namespace SwissTransportBoard.Modules.Board.Presenter
 {
     internal interface IStationboardPresenter
     {

@@ -1,13 +1,13 @@
 ﻿﻿using System;
-using SwissTransportBoard.View;
+using SwissTransportBoard.Modules.Stationboard.View;
 using SwissTransport;
 using SwissTransport.Models;
 using System.Collections.Generic;
-using SwissTransportBoard.Sources.View.Model;
+using SwissTransportBoard.Modules.Stationboard.View.Model;
 using System.Text;
 using System.Linq;
 
-namespace SwissTransportBoard.Presenter
+namespace SwissTransportBoard.Modules.Stationboard.Presenter
 {
     class StationboardPresenter : IStationboardPresenter
     {
