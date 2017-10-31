@@ -44,8 +44,8 @@ namespace SwissTransportBoard.Modules.Board.Presenter
 
             SwissTransportClient swissTransportClient = new SwissTransportClient();
             Stationboard stationboard = await swissTransportClient.GetStationBoard(
-                "Oerlikon",
-                null,
+                Location.Name,
+                Location.Id,
                 transportations,
                 DateTime.Now,
                 10);
@@ -65,7 +65,7 @@ namespace SwissTransportBoard.Modules.Board.Presenter
             IStationboardUI MyView;
             if (View.TryGetTarget(out MyView))
             {
-                MyView.Configure("Oerlikon", journeyViewModels);
+                MyView.Configure(Location.Name, journeyViewModels);
             }
         }
 
