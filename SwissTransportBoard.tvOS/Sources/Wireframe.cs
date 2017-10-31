@@ -1,5 +1,6 @@
 ﻿using System;
 using UIKit;
+using SwissTransport.Models;
 
 namespace SwissTransportBoard
 {
@@ -7,13 +8,14 @@ namespace SwissTransportBoard
     {
         internal void PresentInitialViewController()
         {
-            UIViewController viewController = ServiceLocator.Instance.ProvideStationSelectorViewController();
+            UIViewController viewController = ServiceLocator.Instance.ProvideStationSelectorViewController(this);
             SetRootViewController(viewController);
         }
 
-        internal void PresentStationboardViewController()
+        internal void PresentStationboardViewController(UIViewController fromViewController, Location location)
         {
-            UIViewController viewController = ServiceLocator.Instance.ProvideStationboardViewController();
+            UIViewController viewController = ServiceLocator.Instance.ProvideStationboardViewControllerFor(location);
+            fromViewController.PresentViewController(viewController, true, null);
             SetRootViewController(viewController);
         }
 

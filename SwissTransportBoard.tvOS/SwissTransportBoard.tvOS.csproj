@@ -189,6 +189,7 @@
     <Compile Include="Sources\Modules\Selector\View\StationSelectorCell.cs" />
     <Compile Include="Sources\Modules\Selector\View\StationSelectorViewControllerDataSource.cs" />
     <Compile Include="Sources\Modules\Selector\View\Model\StationViewModel.cs" />
+    <Compile Include="Sources\Modules\Selector\View\StationSelectorViewControllerDelegate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\TVOS\Xamarin.TVOS.CSharp.targets" />
   <Import Project="..\packages\NuGet.Build.Packaging.0.1.248\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.1.248\build\NuGet.Build.Packaging.targets')" />

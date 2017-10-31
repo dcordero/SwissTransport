@@ -3,6 +3,7 @@ using SwissTransportBoard.Modules.Board.Presenter;
 using SwissTransportBoard.Modules.Board.View;
 using SwissTransportBoard.Modules.Selector.Presenter;
 using SwissTransportBoard.Modules.Selector.View;
+using SwissTransport.Models;
 using UIKit;
 
 namespace SwissTransportBoard
@@ -21,20 +22,22 @@ namespace SwissTransportBoard
             }
         }
 
-        internal UIViewController ProvideStationSelectorViewController()
+        internal UIViewController ProvideStationboardViewControllerFor(Location location) 
         {
-            StationSelectorViewController viewController = new StationSelectorViewController();
-            viewController.Presenter = new StationSelectorPresenter(viewController);
-            viewController.DataSource = new StationSelectorViewControllerDataSource();
+            StationboardViewController viewController = new StationboardViewController();
+            viewController.Presenter = new StationboardPresenter(viewController, location);
+            viewController.DataSource = new StationboardViewControllerDataSource();
 
             return viewController;
         }
 
-        internal UIViewController ProvideStationboardViewController() 
+        internal UIViewController ProvideStationSelectorViewController(Wireframe wireframe)
         {
-            StationboardViewController viewController = new StationboardViewController();
-            viewController.Presenter = new StationboardPresenter(viewController);
-            viewController.DataSource = new StationboardViewControllerDataSource();
+            StationSelectorViewController viewController = new StationSelectorViewController();
+            StationSelectorPresenter presenter = new StationSelectorPresenter(viewController, wireframe);
+            viewController.Presenter = presenter;
+            viewController.DataSource = new StationSelectorViewControllerDataSource();
+            viewController.Delegate = new StationSelectorViewControllerDelegate(presenter);
 
             return viewController;
         }

@@ -11,11 +11,14 @@ namespace SwissTransportBoard.Modules.Board.Presenter
 {
     class StationboardPresenter : IStationboardPresenter
     {
-        WeakReference<IStationboardUI> View { get; set; } 
+        WeakReference<IStationboardUI> View { get; set; }
 
-        internal StationboardPresenter(IStationboardUI view)
+        private Location Location;
+
+        internal StationboardPresenter(IStationboardUI view, Location location)
         {
             this.View = new WeakReference<IStationboardUI>(view);
+            this.Location = location;
         }
 
         #region IStationboardPresenter

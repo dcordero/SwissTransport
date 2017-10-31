@@ -12,6 +12,7 @@ namespace SwissTransportBoard.Modules.Selector.View
     {
         internal IStationSelectorPresenter Presenter { get; set; }
         internal StationSelectorViewControllerDataSource DataSource { get; set; }
+        internal StationSelectorViewControllerDelegate Delegate { get; set; }
 
         UITableView TableView;
 
@@ -28,8 +29,12 @@ namespace SwissTransportBoard.Modules.Selector.View
 
         #region IStationSelectorUI
 
+        public UIViewController ViewController() {
+            return this;
+        }
+
         public void Configure(List<StationViewModel> stations)
-        {
+        { 
             DataSource.Items = stations;
             TableView.ReloadData();
         }
@@ -54,8 +59,8 @@ namespace SwissTransportBoard.Modules.Selector.View
         private void SetUpTableView() 
         {
             TableView = new UITableView();
-            TableView.UserInteractionEnabled = false;
             TableView.DataSource = DataSource;
+            TableView.Delegate = Delegate;
             TableView.SeparatorInset = UIEdgeInsets.Zero;
             TableView.RowHeight = StationSelectorCell.RowHeight;
             StationSelectorCell.RegisterCellForReuse(TableView);
