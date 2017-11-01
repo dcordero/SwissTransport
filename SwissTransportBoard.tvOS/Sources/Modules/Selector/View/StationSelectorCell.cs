@@ -29,6 +29,22 @@ namespace SwissTransportBoard.Modules.Selector.View
         {
             base.PrepareForReuse();
             NameLabel.Text = "";
+            NameLabel.BackgroundColor = UIColor.White;
+        }
+
+        public override void DidUpdateFocus(UIFocusUpdateContext context, UIFocusAnimationCoordinator coordinator)
+        {
+            coordinator.AddCoordinatedAnimations(() => { 
+                if (this.Focused)
+                {
+                    ApplyFocusedStyle();
+                }
+                else
+                {
+                    ApplyUnfocusedStyle();
+                }
+            }, null);
+
         }
 
         #region Private
@@ -43,6 +59,7 @@ namespace SwissTransportBoard.Modules.Selector.View
 
         private void SetUpBackground()
         {
+            BackgroundView = new UIView();
             BackgroundColor = UIColor.Clear;
         }
 
@@ -64,6 +81,17 @@ namespace SwissTransportBoard.Modules.Selector.View
             NameLabel.CenterYAnchor.ConstraintEqualTo(CenterYAnchor).Active = true;
             NameLabel.HeightAnchor.ConstraintEqualTo(CellHeight).Active = true;
             NameLabel.WidthAnchor.ConstraintEqualTo(CellWidth).Active = true;
+        }
+
+        private void ApplyFocusedStyle()
+        {
+            NameLabel.BackgroundColor = UIColor.Red;
+
+        }
+
+        private void ApplyUnfocusedStyle()
+        {
+            NameLabel.BackgroundColor = UIColor.White;
         }
 
         #endregion

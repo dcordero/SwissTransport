@@ -42,6 +42,7 @@ namespace SwissTransportBoard
             UISearchController searchViewController = new UISearchController(viewController);
             UISearchContainerViewController searchContainerViewController = new UISearchContainerViewController(searchViewController);
             searchViewController.SearchResultsUpdater = viewController;
+            searchViewController.View.BackgroundColor = UIColor.Clear.FromHex(0x0D2B88);
 
             return searchContainerViewController;
         }
