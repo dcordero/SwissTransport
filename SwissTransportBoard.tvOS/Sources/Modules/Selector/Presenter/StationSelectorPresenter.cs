@@ -27,7 +27,12 @@ namespace SwissTransportBoard.Modules.Selector.Presenter
 
         public void ViewDidLoad()
         {
-            SearchStations("Oerl");
+            
+        }
+
+        public void SearchDidEndEditing(String query)
+        {
+            SearchStations(query);
         }
 
         public void StationSelectedAt(NSIndexPath indexPath)
@@ -35,12 +40,7 @@ namespace SwissTransportBoard.Modules.Selector.Presenter
             if (indexPath.Row < Locations.Count)
             {
                 var item = Locations[indexPath.Row];
-
-                IStationSelectorUI MyView;
-                if (View.TryGetTarget(out MyView))
-                {
-                    Wireframe.PresentStationboardViewController(MyView.ViewController(), item);
-                }
+                Wireframe.PresentStationboardViewController(View.GetTarget().ViewController(), item);
             }            
         }
 

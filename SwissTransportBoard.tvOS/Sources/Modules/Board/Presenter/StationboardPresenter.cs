@@ -62,11 +62,7 @@ namespace SwissTransportBoard.Modules.Board.Presenter
                 journeyViewModels.Add(BuildViewModel(journey));
             }
 
-            IStationboardUI MyView;
-            if (View.TryGetTarget(out MyView))
-            {
-                MyView.Configure(Location.Name, journeyViewModels);
-            }
+            View.GetTarget().Configure(Location.Name, journeyViewModels);
         }
 
         private JourneyViewModel BuildViewModel(Journey journey)
@@ -92,3 +88,19 @@ namespace SwissTransportBoard.Modules.Board.Presenter
         #endregion
     }
 }
+
+internal static class WeakReferenceExtensions
+    {
+        public static T GetTarget<T>(this WeakReference<T> reference) where T : class
+        {
+            T target;
+            reference.TryGetTarget(out target);
+            return target;
+        }
+
+        public static bool IsNull<T>(this WeakReference<T> reference) where T : class
+        {
+            T target;
+            return !reference.TryGetTarget(out target);
+        }
+    }

@@ -39,7 +39,11 @@ namespace SwissTransportBoard
             viewController.DataSource = new StationSelectorViewControllerDataSource();
             viewController.Delegate = new StationSelectorViewControllerDelegate(presenter);
 
-            return viewController;
+            UISearchController searchViewController = new UISearchController(viewController);
+            UISearchContainerViewController searchContainerViewController = new UISearchContainerViewController(searchViewController);
+            searchViewController.SearchResultsUpdater = viewController;
+
+            return searchContainerViewController;
         }
     }
 }

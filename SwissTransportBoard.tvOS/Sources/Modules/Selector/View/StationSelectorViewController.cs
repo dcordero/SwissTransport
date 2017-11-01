@@ -8,7 +8,7 @@ using UIKit;
 namespace SwissTransportBoard.Modules.Selector.View
 {
 
-    class StationSelectorViewController : UIViewController, IStationSelectorUI
+    class StationSelectorViewController : UIViewController, IStationSelectorUI, IUISearchResultsUpdating
     {
         internal IStationSelectorPresenter Presenter { get; set; }
         internal StationSelectorViewControllerDataSource DataSource { get; set; }
@@ -37,6 +37,15 @@ namespace SwissTransportBoard.Modules.Selector.View
         { 
             DataSource.Items = stations;
             TableView.ReloadData();
+        }
+
+        #endregion
+
+        #region IUISearchResultUpdating
+
+        public void UpdateSearchResultsForSearchController(UISearchController searchController) 
+        {
+            Presenter.SearchDidEndEditing(searchController.SearchBar.Text);
         }
 
         #endregion
